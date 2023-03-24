@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 
 import Cookie from 'js-cookie'; //Nos ayuda asignar a nuestro navegador las cookies que esté recibiendo en el momento de la autenticación
 import axios from 'axios'; //Para el manejo de las peticiones como GET, PUT, POST, DELETE
+import endPoints from '@services/api/';
 
 const AuthContext = createContext(); //Se crea un nuevo context gracias a la api de react
 //Se crea la encapsulación de nuestra aplicación
@@ -18,7 +19,18 @@ function useProvideAuth() {
 	const [user, setUser] = useState(null);
 
 	const signIn = async (email, password) => {
-		setUser('login');
+		const options = {
+			headers: {
+				accept: '*/*',
+				'Content-Type': 'application/json',
+			},
+		};
+		const { data: acces_token } = await axios.post(
+			endPoints.auth.login,
+			{ email, password },
+			options
+		);
+		console.log(acces_token);
 	};
 
 	return {
