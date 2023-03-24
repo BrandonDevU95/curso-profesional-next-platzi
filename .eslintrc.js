@@ -14,17 +14,5 @@ module.exports = {
 	],
 	rules: {
 		semi: ['error', 'always'],
-		'prettier/prettier': [
-			'error',
-			{
-				semi: true,
-				singleQuote: true,
-				printWidth: 80,
-				tabWidth: 2,
-				useTabs: true,
-				trailingComma: 'es6',
-				bracketSpacing: true,
-			},
-		],
 	},
 };
